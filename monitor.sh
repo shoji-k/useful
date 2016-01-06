@@ -43,3 +43,9 @@ strace -f -p PID
 # show files process is open
 lsof -p PID
 
+# show iowait by process
+iotop -P
+
+# show network spec
+ethtool eth0
+
