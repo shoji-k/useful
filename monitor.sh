@@ -22,3 +22,24 @@ ps aufx | grep -w 8937 | grep -v grep
 # show package name
 yum whatprovides /usr/libexec/postfix/master
 
+# show operating time, etc..
+w
+
+# show processed
+ps aufx
+
+# show disk usage
+df -h
+
+# show cpu, memory
+top
+
+# show mysql process
+mysqladmin -u root processlist -v
+
+# show system call
+strace -f -p PID
+
+# show files process is open
+lsof -p PID
+
