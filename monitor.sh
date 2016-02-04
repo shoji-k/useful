@@ -43,9 +43,26 @@ strace -f -p PID
 # show files process is open
 lsof -p PID
 
+# show open file for network
+lsof -Pi
+
+# show file process current directory
+lsof -p 6512 | grep cwd
+
 # show iowait by process
 iotop -P
 
 # show network spec
 ethtool eth0
+
+# show login history
+last | head
+
+# linux process summary report
+sudo aureport
+
+# check recently changed files
+find /proc/28456/cwd/ -type f -mtime -60 -ls
+find /tmp/ -type f -mtime -60 -ls
+find /var/tmp/ -type f -mtime -60 -ls
 
