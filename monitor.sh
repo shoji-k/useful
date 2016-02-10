@@ -66,3 +66,8 @@ find /proc/28456/cwd/ -type f -mtime -60 -ls
 find /tmp/ -type f -mtime -60 -ls
 find /var/tmp/ -type f -mtime -60 -ls
 
+# find ip address
+dig @8.8.8.8 google.co.jp
+nslookup google.co.jp 8.8.8.8
+
+
