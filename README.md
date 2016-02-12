@@ -1,2 +1,2 @@
-# useful.sh
-useful script
+# useful
+useful script and something..
