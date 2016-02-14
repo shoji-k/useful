@@ -1,11 +1,9 @@
 ---
 - hosts: ansible
+  become: yes
+  become_method: sudo
   tasks:
     - name: install mysql
       apt: name=mysql-server state=installed
-      become: yes
-      become_method: sudo
     - name: start mysql
       service: name=mysql state=started enabled=yes
-      become: yes
-      become_method: sudo
