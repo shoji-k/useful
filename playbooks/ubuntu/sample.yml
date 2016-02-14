@@ -1,0 +1,7 @@
+---
+- hosts: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: disable selinux
+      command: /sbin/setenforce 0
