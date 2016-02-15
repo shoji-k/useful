@@ -2,6 +2,16 @@
 - hosts: ansible
   become: yes
   become_method: sudo
+  pre_tasks:
+    - name: pre
+      shell: echo 'pre'
   tasks:
-    - name: disable selinux
-      command: /sbin/setenforce 0
+    - name: main
+      shell: echo 'task'
+    # - name: disable selinux
+    #   command: /sbin/setenforce 0
+  post_tasks:
+    - name: post
+      shell: echo 'post'
+
+
