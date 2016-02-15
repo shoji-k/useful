@@ -1,0 +1,9 @@
+---
+- hosts: ansible
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: install git
+    apt:
+      pkg: git
