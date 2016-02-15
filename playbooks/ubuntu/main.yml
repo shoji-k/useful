@@ -1,0 +1,15 @@
+---
+- hosts: ansible
+  vars:
+    http_port: 80
+    max_clients: 100
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  tasks:
+    - include: git.yml
+    - include: apache.yml
+    - include: mysql.yml
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
