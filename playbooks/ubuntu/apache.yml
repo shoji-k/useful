@@ -8,7 +8,7 @@
   become_method: sudo
   tasks:
   - name: ensure apache is at the latest version
-    apt: pkg=apache2 state=latest
+    apt: pkg=apache2 state=present
   # - name: write the apache config file
   #   template: src=/srv/httpd.j2 dest=/etc/httpd.conf
   #   notify:
