@@ -1,0 +1,28 @@
+---
+# - name: apply common configuration
+#   hosts: ansible
+#   remote_user: vagrant
+#
+#   roles:
+#     - common
+
+- name: prepare development environment
+  hosts: ansible
+  remote_user: vagrant
+
+  roles:
+    - dev
+#
+# - name: configure and deploy the webservers and application code
+#   hosts: ansible
+#   remote_user: vagrant
+#
+#   roles:
+#     - web
+#
+# - name: deploy MySQL and configure the databases
+#   hosts: ansible
+#   remote_user: vagrant
+#
+#   roles:
+#     - db

@@ -1,0 +1,41 @@
+---
+- name: Install Requirement
+  become: yes
+  become_method: sudo
+  apt: name={{item}} state=installed
+  with_items:
+    - libcurl4-gnutls-dev
+    - libexpat1-dev
+    - gettext
+    - libz-dev
+    - libssl-dev
+    - python-software-properties
+
+- name: register git repository
+  apt_repository: repo='ppa:git-core/ppa'
+  tags: git
+  become: yes
+  become_method: sudo
+
+- name: Install git
+  apt: name=git state=present
+  tags: git
+  become: yes
+  become_method: sudo
+
+- name: Set .gitconfig file
+  template: src=gitconfig.j2 dest=~/.gitconfig
+
+- name: Install vim
+  apt: name=git state=present
+  tags: vim
+  become: yes
+  become_method: sudo
+
+# - name: Configure ntp file
+#   template: src=ntp.conf.j2 dest=/etc/ntp.conf
+#   tags: ntp
+#   become: yes
+#   become_method: sudo
+#   notify: restart ntp
+
