@@ -5,6 +5,9 @@
 
 dstat -tlafm
 
+# check memory
+dstat -t -gs --mem --vm --ipc --top-mem
+
 # capture network
 tcpdump -i eth0 -n port 80
 # capture mysql network
