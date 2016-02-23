@@ -7,6 +7,10 @@ dstat -tlafm
 
 # check memory
 dstat -t -gs --mem --vm --ipc --top-mem
+# check disk io
+dstat -tdng --file --lock --top-io --top-bio
+# check cpu
+dstat -taf --top-cpu
 
 # capture network
 tcpdump -i eth0 -n port 80
