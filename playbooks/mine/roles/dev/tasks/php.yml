@@ -6,7 +6,6 @@
 
 - name: update apt
   apt: update_cache=yes
-  tags: git
   become: yes
   become_method: sudo
 
