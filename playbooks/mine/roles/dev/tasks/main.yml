@@ -12,74 +12,13 @@
     - tig
     - sysv-rc-conf
 
-- name: Install Requirement for git
-  become: yes
-  become_method: sudo
-  apt: name={{item}} state=installed
-  with_items:
-    - libcurl4-gnutls-dev
-    - libexpat1-dev
-    - gettext
-    - libz-dev
-    - libssl-dev
-    - python-software-properties
-
-- name: register git repository
-  apt_repository: repo='ppa:git-core/ppa'
-  tags: git
-  become: yes
-  become_method: sudo
-
-- name: update apt
-  apt: update_cache=yes
-  tags: git
-  become: yes
-  become_method: sudo
-
 - name: Install git
-  apt: name=git state=present
+  include: git.yml
   tags: git
-  become: yes
-  become_method: sudo
 
-- name: Set .gitconfig file
-  template: src=gitconfig.j2 dest=~/.gitconfig
-
-- name: Install vim
-  apt: name=vim state=present
+- name: install vim
+  include: vim.yml
   tags: vim
-  become: yes
-  become_method: sudo
-
-- name: create directory for vim swap
-  file: path=~/.vimbackup state=directory
-
-- name: Set .ctags file
-  template: src=ctags.j2 dest=~/.ctags
-
-- name: install neobundle.vim
-  shell: curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-
-- name: create directory for vim hook
-  file: path=~/.git_template/hooks state=directory recurse=yes
-
-- name: set vim hooks script
-  template: src=git_template/hooks/{{item}} dest=~/.git_template/hooks/{{item}}
-  with_items:
-    - ctags
-    - post-checkout
-    - post-commit
-    - post-merge
-
-# mkdir -p ~/.vim/doc/
-# wget http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror
-# tar xvzf php_manual_ja.tar.gz
-# rm -f php_manual_ja.tar.gz
-# mv ./php-chunked-xhtml ~/.vim/doc
-#
-# # install refe
-# gem install refe
-# bitclust setup --vesions=2.2.2
 
 - name: install php
   include: php.yml
