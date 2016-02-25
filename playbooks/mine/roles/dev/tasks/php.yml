@@ -1,0 +1,73 @@
+---
+- name: register php repository
+  apt_repository: repo='ppa:ondrej/php5-5.6'
+  become: yes
+  become_method: sudo
+
+- name: update apt
+  apt: update_cache=yes
+  tags: git
+  become: yes
+  become_method: sudo
+
+- name: Install Requirement
+  become: yes
+  become_method: sudo
+  apt: name={{item}} state=installed
+  with_items:
+    - python-software-properties
+
+- name: Install php
+  become: yes
+  become_method: sudo
+  apt: name={{item}} state=installed
+  with_items:
+    - php5
+    - php5-cli
+    - curl
+    - libcurl3
+    - libcurl3-dev
+    - php5-curl
+    - php5-gd
+
+- name: composer
+  shell: "curl -sS https://getcomposer.org/installer | php"
+
+- name: set composer
+  become: yes
+  become_method: sudo
+  shell: "mv composer.phar /usr/local/bin/composer"
+
+    # TODO: composer global require
+# - name: create directory for vim swap
+#   file: path=~/.composer state=directory
+#
+# - name: install phpunit
+#   composer:
+#     command: require
+#     arguments: 'phpunit/phpunit:*'
+#     working_dir: ~/.composer
+#echo 'export PATH=$HOME/.composer/vendor/bin:$PATH' >> ~/.bashrc
+#source ~/.bashrc
+
+## phpunit skelgen
+#composer global require 'phpunit/phpunit-skeleton-generator=*'
+
+# phpcs
+#composer global require 'squizlabs/php_codesniffer:*'
+#phpcs --standard=PSR1,PSR2
+
+# xdebug
+#sudo apt-get install pear
+#pear version
+
+#sudo apt-get install php5-dev
+#sudo pecl install xdebug
+
+#vi /etc/php5/apache2/php.ini
+#zend_extension=/usr/lib/php5/20121212/xdebug.so
+## xdebug.profiler_enable=1
+#xdebug.profiler_enable_trigger=1
+
+#sudo apt-get install kcachegrind
+

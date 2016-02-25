@@ -1,8 +1,4 @@
 ---
-- name: Configure bash file
-  template: src=bashrc.j2 dest=~/.bashrc
-  tags: bashrc
-
 - name: Install ntp
   apt: name=ntp state=present
   tags: ntp
@@ -21,4 +17,18 @@
   tags: ntp
   become: yes
   become_method: sudo
+
+- name: set first dns server
+  become: yes
+  become_method: sudo
+  lineinfile:
+    dest: /etc/network/interfaces
+    create: yes
+    state: present
+    regexp: ^dns-nameservers {{item}}
+    line: dns-nameservers {{item}}
+  with_items:
+    - "{{dns1st}}"
+    - "{{dns2nd}}"
+  notify: restart network
 

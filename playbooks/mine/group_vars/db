@@ -1,5 +1,5 @@
 ---
-mysqlservice: mysqld
+mysqlservice: mysql
 mysql_port: 3306
 dbuser: user
 dbname: sample
