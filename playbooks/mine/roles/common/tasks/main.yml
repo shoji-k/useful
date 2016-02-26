@@ -19,6 +19,7 @@
   become_method: sudo
 
 - name: set first dns server
+  when: user != 'vagrant'
   become: yes
   become_method: sudo
   lineinfile:

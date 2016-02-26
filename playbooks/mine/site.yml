@@ -1,28 +1,37 @@
 ---
-# - name: apply common configuration
-#   hosts: ansible
-#   remote_user: vagrant
-#
+# - hosts: ansible
 #   roles:
-#     - common
+#   - { role: dresden-weekly.Rails }
 
 - name: prepare development environment
   hosts: ansible
-  remote_user: vagrant
-
+  remote_user: "{{user}}"
   roles:
     - dev
-#
-# - name: configure and deploy the webservers and application code
+
+- name: apply common configuration
+  hosts: ansible
+  remote_user: "{{user}}"
+  roles:
+    - common
+
+- name: configure and deploy the webservers and application code
+  hosts: ansible
+  remote_user: "{{user}}"
+
+  roles:
+    - web
+
+- name: deploy MySQL and configure the databases
+  hosts: ansible
+  remote_user: "{{user}}"
+
+  roles:
+    - db
+
+# - name: install ruby
 #   hosts: ansible
-#   remote_user: vagrant
+#   remote_user: "{{user}}"
 #
 #   roles:
-#     - web
-#
-# - name: deploy MySQL and configure the databases
-#   hosts: ansible
-#   remote_user: vagrant
-#
-#   roles:
-#     - db
+#     - ruby
