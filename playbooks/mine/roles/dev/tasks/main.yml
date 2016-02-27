@@ -1,4 +1,14 @@
 ---
+- name: change apt source list
+  become: yes
+  become_method: sudo
+  shell: sed -i".bak" 's/http:\/\/archive.ubuntu.com\/ubuntu/http:\/\/ftp.jaist.ac.jp\/pub\/Linux\/ubuntu/' /etc/apt/sources.list
+
+- name: update apt
+  apt: update_cache=yes
+  become: yes
+  become_method: sudo
+
 - name: Configure bash file
   template: src=bashrc.j2 dest=~/.bashrc
   tags: bashrc

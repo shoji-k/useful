@@ -18,20 +18,35 @@
 - name: configure and deploy the webservers and application code
   hosts: ansible
   remote_user: "{{user}}"
-
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
   hosts: ansible
   remote_user: "{{user}}"
-
   roles:
     - db
+
+# https://galaxy.ansible.com/detail#/role/102
+- hosts: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: true # https://github.com/zzet/ansible-rbenv-role/issues/37
+  vars:
+    rbenv:
+      env: system
+      version: v1.0.0
+      ruby_version: 2.3.0
+  roles:
+    - role: zzet.rbenv
+      rbenv_users:
+        - user
 
 # - name: install ruby
 #   hosts: ansible
 #   remote_user: "{{user}}"
-#
+#   vars:
+#     ruby_version: 2.2.4
+#   tags: ruby
 #   roles:
 #     - ruby
