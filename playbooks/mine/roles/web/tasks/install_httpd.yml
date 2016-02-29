@@ -19,5 +19,5 @@
     path: /var/www/html
     owner: vagrant
     group: www-data
-    mode: 775
+    mode: 0775
 
