@@ -6,24 +6,28 @@
 - name: prepare development environment
   hosts: ansible
   remote_user: "{{user}}"
+  tags: dev
   roles:
     - dev
 
 - name: apply common configuration
   hosts: ansible
   remote_user: "{{user}}"
+  tags: common
   roles:
     - common
 
 - name: configure and deploy the webservers and application code
   hosts: ansible
   remote_user: "{{user}}"
+  tags: web
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
   hosts: ansible
   remote_user: "{{user}}"
+  tags: db
   roles:
     - db
 
