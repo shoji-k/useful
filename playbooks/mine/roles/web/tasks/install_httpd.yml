@@ -13,6 +13,8 @@
 #   notify: restart iptables
 
 - name: change open directory permissions
+  become: yes
+  become_method: sudo
   file:
     path: /var/www/html
     owner: vagrant
