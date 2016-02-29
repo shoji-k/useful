@@ -12,3 +12,10 @@
 #               line="-A INPUT -p tcp  --dport {{ httpd_port }} -j  ACCEPT"
 #   notify: restart iptables
 
+- name: change open directory permissions
+  file:
+    path: /var/www/html
+    owner: vagrant
+    group: www-data
+    mode: 775
+
