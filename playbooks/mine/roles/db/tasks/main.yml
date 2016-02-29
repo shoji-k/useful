@@ -22,10 +22,10 @@
   become_method: sudo
   service: name=mysql state=started enabled=yes
 
-- name: Create Application Database
-  become: yes
-  become_method: sudo
-  mysql_db: name={{ dbname }} state=present
+# - name: Create Application Database
+#   become: yes
+#   become_method: sudo
+#   mysql_db: name={{ dbname }} state=present
 
 - name: Create Application DB User
   become: yes
