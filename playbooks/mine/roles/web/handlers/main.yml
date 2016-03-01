@@ -4,3 +4,8 @@
 
 # - name: restart iptables
 #   service: name=iptables state=restarted
+
+- name: restart apache
+  become: yes
+  become_method: sudo
+  service: name=apache2 state=restarted
