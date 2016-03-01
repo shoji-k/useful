@@ -28,6 +28,7 @@
     - libcurl3-dev
     - php5-curl
     - php5-gd
+    - php5-mysql
 
 - name: composer
   shell: "curl -sS https://getcomposer.org/installer | php"
