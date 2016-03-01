@@ -40,4 +40,11 @@
 - name: Create Application DB User
   become: yes
   become_method: sudo
-  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
+  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='localhost' state=present
+
+- name: wordpress db
+  vars:
+    dbname: wordpress_db
+    dbuser: wordpress_user
+    dbpassword: wordpress_user_password
+  include: create.yml
