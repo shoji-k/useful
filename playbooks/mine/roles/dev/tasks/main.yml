@@ -21,6 +21,7 @@
     - tree
     - tig
     - sysv-rc-conf
+    - language-pack-ja-base
 
 - name: Install git
   include: git.yml
