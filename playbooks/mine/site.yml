@@ -46,6 +46,14 @@
       rbenv_users:
         - user
 
+- name: install wp-cli
+  hosts: ansible
+  remote_user: "{{user}}"
+  tags: wp
+  roles:
+    - wordpress
+
+
 # - name: install ruby
 #   hosts: ansible
 #   remote_user: "{{user}}"
