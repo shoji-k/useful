@@ -10,8 +10,20 @@
 - name: Set .ctags file
   template: src=ctags.j2 dest=~/.ctags
 
-- name: install neobundle.vim
-  shell: curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+- stat: path=~/.vim/bundle
+  register: p
+
+- name: download NeoBundle setup script
+  get_url: url=https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh dest=~/install.sh mode=0755
+  when: p.stat.isdir is not defined
+
+- name: install NeoBundle
+  shell: sh ~/neobundle.sh
+  when: p.stat.isdir is not defined
+
+- name: remove NeoBundle setup script
+  file: path=~/neobundle.sh state=absent
+  when: p.stat.isdir is not defined
 
 - name: create directory for vim hook
   file: path=~/.git_template/hooks state=directory recurse=yes
