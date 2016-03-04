@@ -4,5 +4,10 @@
 # [dbservers]
 # web2
 
+[wordpress]
+bgbgbg user=user
+ansible user=vagrant
+
 [db]
-ansible
+ansible user=vagrant
+

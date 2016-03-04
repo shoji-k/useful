@@ -1,0 +1,7 @@
+---
+- name: install wp-cli
+  hosts: wordpress
+  remote_user: "{{user}}"
+  tags: wp
+  roles:
+    - wordpress
