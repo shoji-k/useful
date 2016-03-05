@@ -1,0 +1,6 @@
+---
+- name: debug
+  hosts: ansible
+  tags: test
+  tasks:
+    debug: var=ansible_node_name

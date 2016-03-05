@@ -1,7 +1,6 @@
 ---
-# - hosts: ansible
-#   roles:
-#   - { role: dresden-weekly.Rails }
+# ansible-galaxy install geerlingguy.composer
+# ansible-galaxy install zzet.rbenv
 
 - name: prepare development environment
   hosts: dev
@@ -9,6 +8,20 @@
   tags: dev
   roles:
     - dev
+
+# https://galaxy.ansible.com/geerlingguy/composer/
+- name: install composer
+  hosts: dev
+  become: yes
+  become_method: sudo
+  tags: php
+  vars:
+    composer_home_owner: "{{user}}"
+    composer_home_group: "{{user}}"
+    composer_global_packages:
+      - { name: phpunit/phpunit }
+  roles:
+    - geerlingguy.composer
 
 - name: apply common configuration
   hosts: common
