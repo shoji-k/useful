@@ -1,13 +1,19 @@
-# [webservers]
-# web3
-#
-# [dbservers]
-# web2
+[common]
+ansible user=vagrant
 
-[wordpress]
-bgbgbg user=user
+[dev]
+ansible user=vagrant
+
+[web]
+ansible user=vagrant
+
+[ruby]
 ansible user=vagrant
 
 [db]
+ansible user=vagrant
+
+[wordpress]
+bgbgbg user=user
 ansible user=vagrant
 

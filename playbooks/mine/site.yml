@@ -4,14 +4,14 @@
 #   - { role: dresden-weekly.Rails }
 
 - name: prepare development environment
-  hosts: ansible
+  hosts: dev
   remote_user: "{{user}}"
   tags: dev
   roles:
     - dev
 
 - name: apply common configuration
-  hosts: ansible
+  hosts: common
   remote_user: "{{user}}"
   tags: common
   roles:
@@ -25,14 +25,14 @@
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: ansible
+  hosts: db
   remote_user: "{{user}}"
   tags: db
   roles:
     - db
 
 # https://galaxy.ansible.com/detail#/role/102
-- hosts: ansible
+- hosts: ruby
   become: yes
   become_method: sudo
   gather_facts: true # https://github.com/zzet/ansible-rbenv-role/issues/37
