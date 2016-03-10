@@ -14,6 +14,6 @@ ansible user=vagrant
 ansible user=vagrant
 
 [wordpress]
-bgbgbg user=user
+# bgbgbg user=user
 ansible user=vagrant
 

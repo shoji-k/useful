@@ -30,7 +30,7 @@
   roles:
     - common
 
-- name: configure and deploy the webservers and application code
+- name: deploy the webservers
   hosts: ansible
   remote_user: "{{user}}"
   tags: web
