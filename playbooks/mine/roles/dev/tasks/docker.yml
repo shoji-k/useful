@@ -1,0 +1,27 @@
+---
+- stat: path=/usr/bin/docker
+  register: p
+
+- name: instal docker
+  shell: "curl -fsSL https://get.docker.com/ | sh"
+  when: p.stat.exists == False
+
+# python 2.7.9~ is needed below
+# - name: download docker install script
+#   get_url: url=https://get.docker.com/ dest=~/docker.sh mode=0755
+#   when: p.stat.exists == False
+#
+# - name: install docker
+#   become: yes
+#   become_method: sudo
+#   command: "sh ~/docker.sh"
+#   when: p.stat.exists == False
+#
+# - name: remove docker install script
+#   file: path=~/docker.sh state=absent
+#   when: p.stat.exists == False
+
+- command: docker -v
+  register: msg
+- debug: var=msg
+

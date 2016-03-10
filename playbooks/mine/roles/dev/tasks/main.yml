@@ -35,3 +35,6 @@
   include: php.yml
   tags: php
 
+- name: install docker
+  include: docker.yml
+  tags: docker
