@@ -1,11 +1,14 @@
 [common]
 ansible user=vagrant
+192.168.33.10 user=vagrant
 
 [dev]
 ansible user=vagrant
+192.168.33.10 user=vagrant
 
 [web]
 ansible user=vagrant
+192.168.33.10 user=vagrant
 
 [ruby]
 ansible user=vagrant
