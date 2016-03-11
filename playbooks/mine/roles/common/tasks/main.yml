@@ -33,3 +33,21 @@
     - "{{dns2nd}}"
   notify: restart network
 
+- name: Set firewall default policy
+  become: yes
+  become_method: sudo
+  ufw: state=enabled policy=reject
+
+- name: Set firewall allow
+  become: yes
+  become_method: sudo
+  ufw: rule=allow port={{ item }}
+  with_items:
+  - 22
+  - 80
+  - 443
+
+# - name: Allow mosh
+#   become: yes
+#   become_method: sudo
+#   ufw: rule=allow app=mosh
