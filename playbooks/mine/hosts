@@ -20,3 +20,7 @@ ansible user=vagrant
 # bgbgbg user=user
 ansible user=vagrant
 
+[deploy]
+ansible user=vagrant
+
+

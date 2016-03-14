@@ -1,0 +1,7 @@
+---
+- name: deploy
+  hosts: deploy
+  remote_user: "{{user}}"
+  tags: deploy
+  roles:
+    - project

@@ -1,0 +1,29 @@
+---
+
+- stat: path={{ git_clone_dest }}
+  register: p
+
+- name: Copy the code from repository
+  git:
+    repo: "{{ repository }}"
+    dest: "{{ git_clone_dest }}"
+    key_file: "{{ key }}"
+    accept_hostkey: yes
+  when: p.stat.isdir is not defined
+
+- name: set wp-config
+  template: src=wp-config-sample.php.j2 dest={{ git_clone_dest }}/wp-config.php
+  when: p.stat.isdir is not defined
+
+- name: change open directory permissions
+  become: yes
+  become_method: sudo
+  file:
+    path: "{{ git_clone_dest }}"
+    owner: "{{ user }}"
+    group: www-data
+    mode: 0775
+    recurse: true
+
+- name: create_db
+  include: create_db.yml
