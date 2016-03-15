@@ -30,6 +30,11 @@
     - php5-gd
     - php5-mysql
 
+- name: change php.ini
+  become: yes
+  become_method: sudo
+  template: src=php.ini.j2 dest=/etc/php5/apache2/php.ini
+  notify: restart apache
 
 - stat: path=/usr/local/bin/composer
   register: p

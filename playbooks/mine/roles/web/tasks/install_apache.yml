@@ -2,6 +2,7 @@
 - name: Install apache2
   apt: name=apache2 state=present
 
+
 - name: change open directory permissions
   become: yes
   become_method: sudo
