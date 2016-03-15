@@ -24,13 +24,13 @@
   become: yes
   become_method: sudo
   template: src=my.cnf.j2 dest=/etc/mysql/my.cnf
-  notify:
-  - restart mysql
+  # notify:
+  # - restart mysql
 
 - name: Start Mysql Service
   become: yes
   become_method: sudo
-  service: name=mysql state=started enabled=yes
+  service: name=mysql state=restarted enabled=yes
 
 # - name: Create Application Database
 #   become: yes
