@@ -22,6 +22,7 @@
     - tig
     - sysv-rc-conf
     - language-pack-ja-base
+    - mosh
 
 - name: Install git
   include: git.yml
@@ -35,6 +36,7 @@
   include: php.yml
   tags: php
 
-- name: install docker
-  include: docker.yml
-  tags: docker
+# does't work
+# - name: install docker
+#   include: docker.yml
+#   tags: docker

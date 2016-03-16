@@ -1,0 +1,20 @@
+[dev]
+newdev user=user
+
+[common]
+newdev user=user
+
+[web]
+newdev user=user
+
+[ruby]
+newdev user=user
+
+[db]
+newdev user=user
+
+[wordpress]
+
+[deploy]
+
+

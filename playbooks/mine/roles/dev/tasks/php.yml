@@ -50,7 +50,7 @@
 - name: set composer
   become: yes
   become_method: sudo
-  command: "mv ~/composer.phar /usr/local/bin/composer"
+  command: "mv /home/{{ ansible_ssh_user }}/composer.phar /usr/local/bin/composer"
   when: p.stat.exists == False
 
 - name: remove NeoBundle setup script
