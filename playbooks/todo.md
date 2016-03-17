@@ -7,3 +7,5 @@ fail to login to mysql database as root
   GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY 'password';
   FLUSH PRIVILEGES;
 
+git clone permission change notification
+ git config core.filemode false
