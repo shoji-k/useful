@@ -89,3 +89,7 @@ describe 'PHP config parameters' do
   end
 end
 
+describe command('ruby -v') do
+  let(:disable_sudo) { true }
+  its(:stdout) { should match /ruby 2\.3\.0.+/ }
+end

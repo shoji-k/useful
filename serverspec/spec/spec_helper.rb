@@ -32,3 +32,5 @@ set :ssh_options, options
 
 # Set PATH
 # set :path, '/sbin:/usr/local/sbin:$PATH'
+
+set :path, '/home/user/.composer/vendor/bin:/usr/local/rbenv/shims:/home/user/.rbenv/bin:/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/user/.composer/vendor/bin'
