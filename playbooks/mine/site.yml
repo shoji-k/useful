@@ -45,7 +45,8 @@
     - db
 
 # https://galaxy.ansible.com/detail#/role/102
-- hosts: ruby
+- name: install ruby and rbenv
+  hosts: ruby
   become: yes
   become_method: sudo
   gather_facts: true # https://github.com/zzet/ansible-rbenv-role/issues/37

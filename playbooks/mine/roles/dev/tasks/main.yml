@@ -23,6 +23,7 @@
     - sysv-rc-conf
     - language-pack-ja-base
     - mosh
+    # - mailutils
 
 - name: Install git
   include: git.yml
