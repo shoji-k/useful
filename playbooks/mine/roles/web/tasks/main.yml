@@ -1,3 +1,40 @@
 ---
-- include: install_apache.yml
-- include: copy_code.yml
+- name: Install apache2
+  apt: name=apache2 state=present
+
+- name: change open directory permissions
+  become: yes
+  become_method: sudo
+  file:
+    path: /var/www/html
+    owner: "{{ user }}"
+    group: www-data
+    mode: 0775
+
+- name: enabled mod_rewrite
+  become: yes
+  become_method: sudo
+  apache2_module: name=rewrite state=present
+  # notify: restart apache
+
+- name: apache service state
+  service: name=apache2 state=started enabled=yes
+
+- name: change port
+  become: yes
+  become_method: sudo
+  lineinfile:
+    dest: '{{ item.dest }}'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+    state: present
+  with_items:
+    - dest: '/etc/apache2/ports.conf'
+      regexp: '^Listen '
+      line: "Listen {{ port }}"
+    - dest: '/etc/apache2/sites-available/000-default.conf'
+      regexp: '^<VirtualHost \*:'
+      line: "<VirtualHost *:{{ port }}>"
+  notify:
+  - restart apache
+

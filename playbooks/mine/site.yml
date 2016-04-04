@@ -31,7 +31,7 @@
     - common
 
 - name: deploy the webservers
-  hosts: ansible
+  hosts: web
   remote_user: "{{user}}"
   tags: web
   roles:
