@@ -1,4 +1,4 @@
-!#/bin/sh
+#!/bin/sh
 
 # upload id_rsa.pub to ~/
 
