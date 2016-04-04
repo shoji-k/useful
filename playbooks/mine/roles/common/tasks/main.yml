@@ -46,7 +46,7 @@
   ufw: rule=allow port={{ item }} proto=tcp
   with_items:
   - "{{ ssh_port }}"
-  - 80
+  - "{{ apache_port }}"
   - 443
   tags: firewall
 # - name: Set firewall default policy

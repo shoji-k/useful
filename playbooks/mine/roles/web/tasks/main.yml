@@ -31,10 +31,10 @@
   with_items:
     - dest: '/etc/apache2/ports.conf'
       regexp: '^Listen '
-      line: "Listen {{ port }}"
+      line: "Listen {{ apache_port }}"
     - dest: '/etc/apache2/sites-available/000-default.conf'
       regexp: '^<VirtualHost \*:'
-      line: "<VirtualHost *:{{ port }}>"
+      line: "<VirtualHost *:{{ apache_port }}>"
   notify:
   - restart apache
 
