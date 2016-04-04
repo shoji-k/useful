@@ -60,6 +60,13 @@
       rbenv_users:
         - user
 
+- name: install gem
+  hosts: ruby
+  remote_user: "{{user}}"
+  tags: gem
+  roles:
+    - ruby
+
 - name: install wp-cli
   hosts: ansible
   remote_user: "{{user}}"

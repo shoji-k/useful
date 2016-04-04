@@ -1,51 +1,56 @@
 ---
-- name: git clone rbenv
-  git: repo=git://github.com/sstephenson/rbenv.git
-       dest=~/.rbenv
-
-- name: git clone ruby build
-  git: repo=git://github.com/sstephenson/ruby-build.git
-       dest=~/.rbenv/plugins/ruby-build
-
-- name: Install dependencies for ruby-build (see. https://github.com/sstephenson/ruby-build/wiki)
+- name: Install Bundler
   become: yes
   become_method: sudo
-  apt: name={{ item }} state=latest
-  with_items:
-    - autoconf
-    - bison
-    - build-essential
-    - libssl-dev
-    - libyaml-dev
-    - libreadline6-dev
-    - zlib1g-dev
-    - libncurses5-dev
-    - libffi-dev
-    - libgdbm3
-    - libgdbm-dev
+  command: bash -lc "gem install bundler"
 
-# - name: Configure bash file
-#   template: src=bashrc.j2 dest=~/.bashrc
-#   tags: bashrc
-# - name: set up rbenv
-#   shell: source ~/.bashrc executable=/bin/bash
-# - name: set up rbenv
-#   shell: /bin/bash -lc "source ~/.bashrc"
-
-# - name: rbenv init
-#   become: yes
-#   become_method: sudo
-#   shell: $SHELL -lc "/home/vagrant/.rbenv/bin/rbenv init"
-
-# - name: install ruby
-#   command: rbenv install 2.2.4
-
-# - name: set ruby {{ ruby_version }}
-#   shell: /bin/bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
-
-- name: set ruby {{ ruby_version }}
-  shell: "{{item}}"
-  with_items:
-    # - bash -lc ". ~/.bashrc" && bash -lc "rbenv global {{ ruby_version }}"
-    - . ~/.bashrc && rbenv global {{ ruby_version }}
-
+#- name: git clone rbenv
+#  git: repo=git://github.com/sstephenson/rbenv.git
+#       dest=~/.rbenv
+#
+#- name: git clone ruby build
+#  git: repo=git://github.com/sstephenson/ruby-build.git
+#       dest=~/.rbenv/plugins/ruby-build
+#
+#- name: Install dependencies for ruby-build (see. https://github.com/sstephenson/ruby-build/wiki)
+#  become: yes
+#  become_method: sudo
+#  apt: name={{ item }} state=latest
+#  with_items:
+#    - autoconf
+#    - bison
+#    - build-essential
+#    - libssl-dev
+#    - libyaml-dev
+#    - libreadline6-dev
+#    - zlib1g-dev
+#    - libncurses5-dev
+#    - libffi-dev
+#    - libgdbm3
+#    - libgdbm-dev
+#
+## - name: Configure bash file
+##   template: src=bashrc.j2 dest=~/.bashrc
+##   tags: bashrc
+## - name: set up rbenv
+##   shell: source ~/.bashrc executable=/bin/bash
+## - name: set up rbenv
+##   shell: /bin/bash -lc "source ~/.bashrc"
+#
+## - name: rbenv init
+##   become: yes
+##   become_method: sudo
+##   shell: $SHELL -lc "/home/vagrant/.rbenv/bin/rbenv init"
+#
+## - name: install ruby
+##   command: rbenv install 2.2.4
+#
+## - name: set ruby {{ ruby_version }}
+##   shell: /bin/bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
+#
+#- name: set ruby {{ ruby_version }}
+#  shell: "{{item}}"
+#  with_items:
+#    # - bash -lc ". ~/.bashrc" && bash -lc "rbenv global {{ ruby_version }}"
+#    - . ~/.bashrc && rbenv global {{ ruby_version }}
+#
