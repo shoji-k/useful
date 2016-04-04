@@ -29,6 +29,7 @@
     - php5-curl
     - php5-gd
     - php5-mysql
+    - php5-mcrypt
 
 - name: change apache2/php.ini
   become: yes
