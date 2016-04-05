@@ -1,0 +1,2 @@
+nginx_pgp_url: http://nginx.org/keys/nginx_signing.key
+nginx_repository_url: http://nginx.org/packages/ubuntu/

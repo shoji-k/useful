@@ -1,0 +1,25 @@
+---
+- name : Add official nginx PGP key
+  become: yes
+  become_method: sudo
+  apt_key: url={{ nginx_pgp_url }} state=present
+
+- name : Add official nginx repository
+  become: yes
+  become_method: sudo
+  lineinfile :
+    dest: '/etc/apt/sources.list'
+    line: '{{ item }} {{ nginx_repository_url }} {{ ansible_distribution_release }} nginx'
+  with_items:
+    - deb
+    - deb-src
+
+- name : Run apt-get update
+  become: yes
+  become_method: sudo
+  apt: update_cache=yes
+
+- name : Install nginx
+  become: yes
+  become_method: sudo
+  apt : name=nginx state=present

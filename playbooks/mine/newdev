@@ -17,4 +17,6 @@ newdev user=user
 
 [deploy]
 
+[nginx]
+newdev user=user
 

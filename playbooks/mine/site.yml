@@ -74,6 +74,13 @@
   roles:
     - wordpress
 
+- name: install nginx
+  hosts: nginx
+  remote_user: "{{user}}"
+  tags: nginx
+  roles:
+    - nginx
+
 # - name: install ruby
 #   hosts: ansible
 #   remote_user: "{{user}}"
