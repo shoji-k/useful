@@ -1,0 +1,18 @@
+<VirtualHost *:{{ apache_port }}>
+	#ServerName www.example.com
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+
+	#LogLevel info ssl:warn
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  <Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+</VirtualHost>
+

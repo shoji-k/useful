@@ -14,7 +14,7 @@
   register: p
 
 - name: download NeoBundle setup script
-  get_url: url=https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh dest=~/install.sh mode=0755
+  get_url: url=https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh dest=~/neobundle.sh mode=0755
   when: p.stat.isdir is not defined
 
 - name: install NeoBundle

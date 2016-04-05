@@ -1,0 +1,27 @@
+---
+- stat: path=~/.nvm
+  register: p
+
+# - name: instal nvm
+#   shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash"
+  # when: p.stat.exists == False
+
+- name: download nvm script
+  get_url: url=https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh dest=~/nvm.sh mode=0755
+  when: p.stat.isdir is not defined
+
+- name: install nvm
+  shell: sh ~/nvm.sh
+  when: p.stat.isdir is not defined
+
+- name: remove nvm script
+  file: path=~/nvm.sh state=absent
+  when: p.stat.isdir is not defined
+
+    # doesn't work
+# - name: Install {{ node_version }}
+#   shell: bash -lc "nvm install {{ node_version }}"
+#   register: nvm_install_result
+#
+# - name: nvm debug
+#   debug: var=nvm_install_result

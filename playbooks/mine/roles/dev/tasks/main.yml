@@ -37,7 +37,12 @@
   include: php.yml
   tags: php
 
+- name: install node.js
+  include: node.yml
+  tags: node
+
 # does't work
 # - name: install docker
 #   include: docker.yml
 #   tags: docker
+

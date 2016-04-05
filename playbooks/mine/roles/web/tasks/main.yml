@@ -18,7 +18,14 @@
   # notify: restart apache
 
 - name: apache service state
+  become: yes
+  become_method: sudo
   service: name=apache2 state=started enabled=yes
+
+- name: Set default virtualhost config
+  become: yes
+  become_method: sudo
+  template: src=000-default.conf.j2 dest=/etc/apache2/sites-available/000-default.conf
 
 - name: change port
   become: yes
@@ -32,9 +39,6 @@
     - dest: '/etc/apache2/ports.conf'
       regexp: '^Listen '
       line: "Listen {{ apache_port }}"
-    - dest: '/etc/apache2/sites-available/000-default.conf'
-      regexp: '^<VirtualHost \*:'
-      line: "<VirtualHost *:{{ apache_port }}>"
   notify:
   - restart apache
 
