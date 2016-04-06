@@ -23,5 +23,8 @@ apt-get install newrelic-sysmond
 sudo nrsysmond-config --set license_key=xxxxxxxxxxx
 sudo /etc/init.d/nrsysmond-config start
 
+# add newrelic php
+sudo apt-get install newrelic-php5
+
 # set boot
 sudo sysv-rc-conf
