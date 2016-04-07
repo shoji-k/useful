@@ -16,7 +16,7 @@ ansible user=vagrant
 [db]
 ansible user=vagrant
 
-[wordpress]
+[wp-cli]
 # bgbgbg user=user
 ansible user=vagrant
 

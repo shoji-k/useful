@@ -13,7 +13,11 @@ newdev user=user
 [db]
 newdev user=user
 
-[wordpress]
+[wp]
+newdev user=user
+
+[wp-cli]
+newdev user=user
 
 [deploy]
 

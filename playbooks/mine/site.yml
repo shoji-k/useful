@@ -68,11 +68,11 @@
     - ruby
 
 - name: install wp-cli
-  hosts: ansible
+  hosts: wp-cli
   remote_user: "{{user}}"
-  tags: wp
+  tags: wp-cli
   roles:
-    - wordpress
+    - wp-cli
 
 - name: install nginx
   hosts: nginx
