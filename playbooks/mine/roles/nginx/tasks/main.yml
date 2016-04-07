@@ -23,3 +23,36 @@
   become: yes
   become_method: sudo
   apt : name=nginx state=present
+
+- name : Install php5-fpm
+  become: yes
+  become_method: sudo
+  apt : name=php5-fpm state=present
+
+- name: Set nginx config
+  become: yes
+  become_method: sudo
+  template: src=base.conf.j2 dest=/etc/nginx/conf.d/base.conf
+  notify:
+    - restart nginx
+
+- name: change php5-fpm user
+  become: yes
+  become_method: sudo
+  lineinfile:
+    dest: '/etc/php5/fpm/pool.d/www.conf'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+    state: present
+  with_items:
+    - regexp: '^user ='
+      line: 'user = nginx'
+    - regexp: '^group ='
+      line: 'group = nginx'
+    - regexp: '^listen.owner'
+      line: 'listen.owner = nginx'
+    - regexp: '^listen.group'
+      line: 'listen.group = nginx'
+  notify:
+    - restart php5-fpm
+

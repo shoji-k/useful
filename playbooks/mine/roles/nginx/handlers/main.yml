@@ -3,3 +3,8 @@
   become: yes
   become_method: sudo
   service: name=nginx state=restarted
+
+- name: restart php5-fpm
+  become: yes
+  become_method: sudo
+  service: name=php5-fpm state=restarted
