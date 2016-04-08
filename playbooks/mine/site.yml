@@ -67,19 +67,26 @@
   roles:
     - ruby
 
-- name: install wp-cli
-  hosts: wp-cli
-  remote_user: "{{user}}"
-  tags: wp-cli
-  roles:
-    - wp-cli
-
 - name: install nginx
   hosts: nginx
   remote_user: "{{user}}"
   tags: nginx
   roles:
     - nginx
+
+- name: install wp
+  hosts: wp
+  remote_user: "{{user}}"
+  tags: wp
+  roles:
+    - wp
+
+- name: install wp-cli
+  hosts: wp-cli
+  remote_user: "{{user}}"
+  tags: wp-cli
+  roles:
+    - wp-cli
 
 # - name: install ruby
 #   hosts: ansible
