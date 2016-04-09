@@ -6,3 +6,6 @@ sudo apt-get update
 sudo apt-get install ansible
 
 # next> ssh.sh
+
+# command
+# ansible-playbook -i newdev site.yml -K -vvvv -t wp
