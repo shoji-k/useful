@@ -10,20 +10,20 @@
 - name: Set .ctags file
   template: src=ctags.j2 dest=~/.ctags
 
-- stat: path=~/.vim/bundle
-  register: p
-
-- name: download NeoBundle setup script
-  get_url: url=https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh dest=~/neobundle.sh mode=0755
-  when: p.stat.isdir is not defined
-
-- name: install NeoBundle
-  shell: sh ~/neobundle.sh
-  when: p.stat.isdir is not defined
-
-- name: remove NeoBundle setup script
-  file: path=~/neobundle.sh state=absent
-  when: p.stat.isdir is not defined
+# - stat: path=~/.vim/bundle
+#   register: p
+#
+# - name: download NeoBundle setup script
+#   get_url: url=https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh dest=~/dein.sh mode=0755
+#   when: p.stat.isdir is not defined
+#
+# - name: install NeoBundle
+#   shell: sh ~/dein.sh
+#   when: p.stat.isdir is not defined
+#
+# - name: remove NeoBundle setup script
+#   file: path=~/dein.sh state=absent
+#   when: p.stat.isdir is not defined
 
 - name: create directory for vim hook
   file: path=~/.git_template/hooks state=directory recurse=yes
