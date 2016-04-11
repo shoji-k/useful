@@ -28,3 +28,7 @@ sudo apt-get install newrelic-php5
 
 # set boot
 sudo sysv-rc-conf
+
+# mysql
+# do before
+mysql_secure_installation
