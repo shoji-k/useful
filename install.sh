@@ -23,6 +23,9 @@ apt-get install newrelic-sysmond
 sudo nrsysmond-config --set license_key=xxxxxxxxxxx
 sudo /etc/init.d/nrsysmond-config start
 
+sudo service nginx restart
+sudo service php5-fpm restart
+
 # add newrelic php
 sudo apt-get install newrelic-php5
 
