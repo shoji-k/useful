@@ -26,6 +26,19 @@
   become: yes
   become_method: sudo
 
+# github.com doesn't recognize
+# - name: copy local gpg keys
+#   copy: src=~/.gnupg dest=/home/{{ user }}/ mode=600
+#
+# - name: change .gnupg directory permission
+#   become: yes
+#   become_method: sudo
+#   file:
+#     path: "/home/{{ user }}/.gnupg"
+#     owner: "{{ user }}"
+#     group: "{{ user }}"
+#     mode: 0700
+
 - name: Set .gitconfig file
   template: src=gitconfig.j2 dest=~/.gitconfig
 
