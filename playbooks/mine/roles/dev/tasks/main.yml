@@ -23,6 +23,7 @@
     - sysv-rc-conf
     - language-pack-ja-base
     - mosh
+    - ncftp
     # - mailutils
 
 - name: Install git
