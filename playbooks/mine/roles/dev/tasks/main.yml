@@ -24,6 +24,7 @@
     - language-pack-ja-base
     - mosh
     - ncftp
+    - unzip
     # - mailutils
 
 - name: Install git
