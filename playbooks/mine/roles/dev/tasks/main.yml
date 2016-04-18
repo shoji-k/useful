@@ -25,6 +25,7 @@
     - mosh
     - ncftp
     - unzip
+    # - xvfb # for browser text
     # - mailutils
 
 - name: Install git
