@@ -8,7 +8,7 @@
   file: path=~/.vimbackup state=directory
 
 - name: Set .ctags file
-  template: src=ctags.j2 dest=~/.ctags
+  template: src=ctags.j2 dest=~/.ctags force=no
 
 # - stat: path=~/.vim/bundle
 #   register: p
@@ -29,7 +29,8 @@
   file: path=~/.git_template/hooks state=directory recurse=yes
 
 - name: set vim hooks script
-  template: src=git_template/hooks/{{item}} dest=~/.git_template/hooks/{{item}}
+  template: src=git_template/hooks/{{item}} dest=~/.git_template/hooks/{{item}} force=no
+
   with_items:
     - ctags
     - post-checkout

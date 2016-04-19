@@ -10,7 +10,7 @@
   become_method: sudo
 
 - name: Configure bash file
-  template: src=bashrc.j2 dest=~/.bashrc
+  template: src=bashrc.j2 dest=~/.bashrc force=no
   tags: bashrc
 
 - name: Install packages for dev

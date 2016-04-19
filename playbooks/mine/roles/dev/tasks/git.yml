@@ -10,6 +10,7 @@
     - libz-dev
     - libssl-dev
     - python-software-properties
+    - exuberant-ctags
 
 - name: register git repository
   apt_repository: repo='ppa:git-core/ppa'
@@ -40,5 +41,5 @@
 #     mode: 0700
 
 - name: Set .gitconfig file
-  template: src=gitconfig.j2 dest=~/.gitconfig
+  template: src=gitconfig.j2 dest=~/.gitconfig force=no
 
