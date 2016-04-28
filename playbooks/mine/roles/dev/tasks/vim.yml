@@ -4,6 +4,11 @@
   become: yes
   become_method: sudo
 
+- name: Install vim lua support
+  apt: name=vim-gnome state=present
+  become: yes
+  become_method: sudo
+
 - name: create directory for vim swap
   file: path=~/.vimbackup state=directory
 
